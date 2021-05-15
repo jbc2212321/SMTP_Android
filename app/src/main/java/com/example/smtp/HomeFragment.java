@@ -98,7 +98,7 @@ public class HomeFragment extends Fragment {
                     bundle.putString("username",username);
                     //
 
-                    EventBus.getDefault().post(new EventS("username",username));//ssj,szq是我定义的两个string类型变量
+
                     //
 
                     NavController navController = Navigation.findNavController(v);

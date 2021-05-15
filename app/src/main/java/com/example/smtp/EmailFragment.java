@@ -49,7 +49,7 @@ public class EmailFragment extends Fragment {
 
     @Override
     public  void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        System.out.println("onClick!!");
+   //     System.out.println("onClick!!");
         super.onActivityCreated(savedInstanceState);
 
         binding.buttonEmailSend.setOnClickListener(new View.OnClickListener() {

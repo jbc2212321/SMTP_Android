@@ -55,5 +55,14 @@ public class PersonalFragment extends Fragment {
                 navController.navigate(R.id.action_personalFragment_to_emailFragment,bundle);
             }
         });
+        binding.personalPop3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle=new Bundle();
+                bundle.putString("username",username);
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.action_personalFragment_to_reciveFragment,bundle);
+            }
+        });
     }
 }

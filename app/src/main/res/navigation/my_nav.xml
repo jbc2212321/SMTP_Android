@@ -34,6 +34,9 @@
         <action
                 android:id="@+id/action_personalFragment_to_emailFragment"
                 app:destination="@id/emailFragment" />
+        <action
+                android:id="@+id/action_personalFragment_to_reciveFragment"
+                app:destination="@id/reciveFragment" />
     </fragment>
     <fragment
             android:id="@+id/registerFragment"
@@ -44,4 +47,9 @@
                 android:id="@+id/action_registerFragment_to_personalFragment"
                 app:destination="@id/personalFragment" />
     </fragment>
+    <fragment
+            android:id="@+id/reciveFragment"
+            android:name="com.example.smtp.ReciveFragment"
+            android:label="fragment_recive"
+            tools:layout="@layout/fragment_recive" />
 </navigation>
