@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/my_nav"
+        app:startDestination="@id/homeFragment">
+    <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.example.smtp.HomeFragment"
+            android:label="fragment_home"
+            tools:layout="@layout/fragment_home"
+            app:startDestination="@id/action_homeFragment_to_personalFragment">
+        <action
+                android:id="@+id/action_homeFragment_to_personalFragment"
+                app:destination="@id/personalFragment" />
+        <action
+                android:id="@+id/action_homeFragment_to_registerFragment"
+                app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/emailFragment"
+            android:name="com.example.smtp.EmailFragment"
+            android:label="fragment_email"
+            tools:layout="@layout/fragment_email" >
+        <action
+                android:id="@+id/action_emailFragment_to_personalFragment"
+                app:destination="@id/personalFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/personalFragment"
+            android:name="com.example.smtp.PersonalFragment"
+            android:label="fragment_personal"
+            tools:layout="@layout/fragment_personal" >
+        <action
+                android:id="@+id/action_personalFragment_to_emailFragment"
+                app:destination="@id/emailFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.example.smtp.RegisterFragment"
+            android:label="fragment_register"
+            tools:layout="@layout/fragment_register" >
+        <action
+                android:id="@+id/action_registerFragment_to_personalFragment"
+                app:destination="@id/personalFragment" />
+    </fragment>
+</navigation>
