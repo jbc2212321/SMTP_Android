@@ -42,7 +42,7 @@ public class EmailDetailFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public synchronized void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         final String[] answer = new String[1];
         Thread t = new Thread(new Runnable() {
@@ -65,6 +65,20 @@ public class EmailDetailFragment extends Fragment {
         }
 
 
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Map<String, String> paramsMap = new HashMap<>();
+                try {
+                    HttpUtil.doPost("getPOP3", paramsMap);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t2.start();
+
         popCommand command=new popCommand();
         String content="";
         try {
@@ -74,11 +88,19 @@ public class EmailDetailFragment extends Fragment {
         }
 
 
+
+
+
+
         System.out.println("answer[0]:"+answer[0]);
         JSONObject jsonObject = JSONObject.parseObject(answer[0]);
         binding.editTextEmailReciver.setText(jsonObject.getString("email_to"));
         binding.editTextEmailSender.setText(jsonObject.getString("email_from")); //发件人
         binding.editTextEmailTheme.setText(jsonObject.getString("email_subject")); //主题
         binding.editTextEmailContent.setText(content); //内容
+        binding.editTextEmailReciver.setEnabled(false);
+        binding.editTextEmailSender.setEnabled(false);
+        binding.editTextEmailTheme.setEnabled(false);
+        binding.editTextEmailContent.setEnabled(false);
     }
 }
