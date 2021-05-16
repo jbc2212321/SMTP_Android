@@ -1,5 +1,9 @@
 package com.example.smtp.emil;
 
+import com.example.smtp.util.HttpUtil;
+
+import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,17 +12,29 @@ import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class smtpCommand {
-    public String send(String userName,String password,String mailFrom,String sendTO,String subject,String content){
+    public synchronized String send(String userName,String password,String mailFrom,String sendTO,String subject,String content){
         String ip="";
         try {
             InetAddress ip4 = Inet4Address.getLocalHost();
             ip="10.0.2.2";//实际测试时更改为服务器地址
             System.out.println(ip4.getHostAddress());
-            int port=25;//getPort();
-            Socket socket=new Socket(ip,port);
+            final int[] get_port = {25};//getPort();
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    get_port[0] =Integer.valueOf( HttpUtil.doGet("getSMTP"));
+                }
+            });
+            t.start();
+
+            int port=get_port[0];
+            System.out.println("smtp port:"+port);
+            Socket socket=new Socket(ip, port);
 
 
             Scanner sc = new Scanner(System.in);

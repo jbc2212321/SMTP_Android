@@ -12,33 +12,44 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-public class popCommand {
-    Socket socket;
-    public  boolean login(String userName,String password){
+import com.example.smtp.util.HttpUtil;
+
+public  class popCommand {
+    Socket  socket;
+    private  boolean login(String userName, String password){
         //登录账号（密码为333即可以登录）
         String ip="";
         try {
 //            InetAddress ip4 = Inet4Address.getLocalHost();
             ip="10.0.2.2";//实际测试时更改为服务器地址
             //   System.out.println(ip4.getHostAddress());
-            int port=339;//getPort();
+            final int[] get_port = {100};//getPort();
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    get_port[0] =Integer.parseInt( HttpUtil.doGet("getPOP"));
+                }
+            });
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            int port=get_port[0];
+            System.out.println("pop port:"+port);
             socket=new Socket(ip,port);
-
-
+      //      System.out.println("popcommond!");
             Scanner sc = new Scanner(System.in);
             BufferedReader systemIn = new BufferedReader(new InputStreamReader(System.in));
             BufferedReader socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter socketOut = new PrintWriter(socket.getOutputStream());
             String ret="";
-
-
-            socketOut.println("pop3");
+            System.out.println("popcommond!");
+        socketOut.println("pop3");
             socketOut.flush();
             ret = socketIn.readLine();
             System.out.println(ret);
-
-
-
             System.out.println(userName);
             socketOut.println("USER "+userName);
             socketOut.flush();
@@ -52,9 +63,7 @@ public class popCommand {
 
             if(ret=="+OK user successfully logged on!")return true;
             else return false;
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }  catch (IOException e) {
             e.printStackTrace();
         }
         return  false;

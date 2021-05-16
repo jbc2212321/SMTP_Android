@@ -51,5 +51,14 @@
             android:id="@+id/reciveFragment"
             android:name="com.example.smtp.ReciveFragment"
             android:label="fragment_recive"
-            tools:layout="@layout/fragment_recive" />
+            tools:layout="@layout/fragment_recive" >
+        <action
+                android:id="@+id/action_reciveFragment_to_emailDetailFragment"
+                app:destination="@id/emailDetailFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/emailDetailFragment"
+            android:name="com.example.smtp.EmailDetailFragment"
+            android:label="fragment_email_detail"
+            tools:layout="@layout/fragment_email_detail" />
 </navigation>

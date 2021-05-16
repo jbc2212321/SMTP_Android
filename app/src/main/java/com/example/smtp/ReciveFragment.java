@@ -4,12 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -35,6 +37,7 @@ public class ReciveFragment extends Fragment {
     JSONObject jsonObject;
     MyAdapter myAdapter=new MyAdapter();
     popCommand command;
+    Button button;
     public ReciveFragment() {
         // Required empty public constructor
     }
@@ -81,9 +84,8 @@ public class ReciveFragment extends Fragment {
             @Override
             public void run() {
                 Map<String, String> paramsMap = new HashMap<>();
-              //  paramsMap.put("currentUser", username);
                 try {
-                    HttpUtil.doPost("getPOP", paramsMap);
+                    HttpUtil.doPost("getPOP3", paramsMap);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -121,6 +123,11 @@ public class ReciveFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         binding.recyclerView.setAdapter(myAdapter);
+        binding.recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        button=   binding.getRoot().findViewById(R.id.button_email_delete);
+
+
 
     }
 }
