@@ -21,7 +21,7 @@ public class smtpCommand {
         String ip="";
         try {
             InetAddress ip4 = Inet4Address.getLocalHost();
-            ip="10.0.2.2";//实际测试时更改为服务器地址
+            ip=HttpUtil.ip;//实际测试时更改为服务器地址
             System.out.println(ip4.getHostAddress());
             final int[] get_port = {25};//getPort();
             Thread t = new Thread(new Runnable() {
@@ -75,6 +75,7 @@ public class smtpCommand {
             ret = socketIn.readLine();
             System.out.println(ret);
 
+            if(content.equals("")){content="null";}
             socketOut.println(content);
             socketOut.flush();
 //            ret = socketIn.readLine();

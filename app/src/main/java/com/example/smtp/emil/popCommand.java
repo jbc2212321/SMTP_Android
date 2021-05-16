@@ -21,7 +21,7 @@ public  class popCommand {
         String ip="";
         try {
 //            InetAddress ip4 = Inet4Address.getLocalHost();
-            ip="10.0.2.2";//实际测试时更改为服务器地址
+            ip=HttpUtil.ip;//实际测试时更改为服务器地址
             //   System.out.println(ip4.getHostAddress());
             final int[] get_port = {100};//getPort();
             Thread t = new Thread(new Runnable() {
@@ -151,7 +151,7 @@ public  class popCommand {
 
 
         socketOut.println("RETR "+num);
-        socketOut.flush();
+       socketOut.flush();
         ret = socketIn.readLine();
         System.out.println(ret);
         String temp[]=ret.split("<sen>");

@@ -59,6 +59,7 @@ public class EmailFragment extends Fragment {
                 final String sender= String.valueOf(binding.editTextEmailSender.getText());  //发件人
                 final String theme= String.valueOf(binding.editTextEmailTheme.getText());  //主题
                 final String content= String.valueOf(binding.editTextEmailContent.getText());  //内容
+            //    if(content.equals("")){content="null";}
                 Thread t = new Thread(new Runnable() {
                     @Override
                     public void run() {

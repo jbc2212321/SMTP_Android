@@ -14,8 +14,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class HttpUtil {
-    public static String baseUrl = "http://119.39.26.219:8096/";
-    public static String ip="10.0.2.2";
+//    public static String baseUrl = "http://119.39.26.219:8096/";
+    public static String baseUrl = "http://jayice.cn.utools.club/";
+
+    public static String ip="119.39.26.219";
     static OkHttpClient client = new OkHttpClient();
     public static final MediaType FORM_CONTENT_TYPE
             = MediaType.parse("application/json;charset=utf-8");

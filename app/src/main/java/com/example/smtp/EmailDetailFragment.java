@@ -10,10 +10,12 @@ import androidx.fragment.app.Fragment;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.smtp.databinding.FragmentEmailDetailBinding;
+import com.example.smtp.emil.popCommand;
 import com.example.smtp.util.HttpUtil;
 
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,11 +63,22 @@ public class EmailDetailFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
+        popCommand command=new popCommand();
+        String content="";
+        try {
+            content=command.getContent(Integer.parseInt(number));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         System.out.println("answer[0]:"+answer[0]);
         JSONObject jsonObject = JSONObject.parseObject(answer[0]);
         binding.editTextEmailReciver.setText(jsonObject.getString("email_to"));
         binding.editTextEmailSender.setText(jsonObject.getString("email_from")); //发件人
         binding.editTextEmailTheme.setText(jsonObject.getString("email_subject")); //主题
-        binding.editTextEmailContent.setText(jsonObject.getString("email_cont")); //内容
+        binding.editTextEmailContent.setText(content); //内容
     }
 }
