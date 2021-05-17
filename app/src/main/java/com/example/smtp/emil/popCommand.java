@@ -157,7 +157,7 @@ public  class popCommand {
         String temp[]=ret.split("<sen>");
         String content="";
         for(int i=0;i<temp.length-1;++i){
-            content+=temp[i]+"/n";
+            content+=temp[i]+"\n";
         }
 
         this.quit();

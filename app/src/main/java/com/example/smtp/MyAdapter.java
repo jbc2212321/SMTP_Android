@@ -80,6 +80,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                             @Override
                             public void run() {
                                 Map<String, String> paramsMap = new HashMap<>();
+                                paramsMap.put("currentUser",jsonArray.getJSONObject(position).getString("email_to"));
                                 try {
                                     HttpUtil.doPost("getPOP3", paramsMap);
                                 } catch (JSONException e) {

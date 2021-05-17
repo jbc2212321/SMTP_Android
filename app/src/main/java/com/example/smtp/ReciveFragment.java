@@ -84,9 +84,9 @@ public class ReciveFragment extends Fragment {
             @Override
             public void run() {
                 Map<String, String> paramsMap = new HashMap<>();
+                paramsMap.put("currentUser",getArguments().getString("username"));
                 try {
                     HttpUtil.doPost("getPOP3", paramsMap);
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -18,6 +18,7 @@ public class HttpUtil {
     public static String baseUrl = "http://jayice.cn.utools.club/";
 
     public static String ip="119.39.26.219";
+    //    "//"192.168.43.214";//"119.39.26.219";
     static OkHttpClient client = new OkHttpClient();
     public static final MediaType FORM_CONTENT_TYPE
             = MediaType.parse("application/json;charset=utf-8");
