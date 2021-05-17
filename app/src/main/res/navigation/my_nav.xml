@@ -37,6 +37,9 @@
         <action
                 android:id="@+id/action_personalFragment_to_reciveFragment"
                 app:destination="@id/reciveFragment" />
+        <action
+                android:id="@+id/action_personalFragment_to_informationFragment"
+                app:destination="@id/informationFragment" />
     </fragment>
     <fragment
             android:id="@+id/registerFragment"
@@ -61,4 +64,9 @@
             android:name="com.example.smtp.EmailDetailFragment"
             android:label="fragment_email_detail"
             tools:layout="@layout/fragment_email_detail" />
+    <fragment
+            android:id="@+id/informationFragment"
+            android:name="com.example.smtp.InformationFragment"
+            android:label="fragment_information"
+            tools:layout="@layout/fragment_information" />
 </navigation>

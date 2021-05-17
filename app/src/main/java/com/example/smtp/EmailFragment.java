@@ -83,8 +83,8 @@ public class EmailFragment extends Fragment {
                 smtpCommand command=new smtpCommand();
                 System.out.println("getMEssager:\n"+"发送人:"+username+"\n收件人:"+reciver+"\n主题: "+theme+"\n内容: "+content);
                 command.send(username,"333",username,reciver,theme,content);
-//                Toast toast=Toast.makeText(getActivity(), "发送成功", Toast.LENGTH_SHORT);
-//                toast.show();
+                Toast toast=Toast.makeText(getActivity(), "发送成功", Toast.LENGTH_SHORT);
+                toast.show();
 
             }
         });

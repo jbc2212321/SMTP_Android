@@ -14,4 +14,6 @@
     <string name="document_content">文件内容</string>
     <string name="send">发送</string>
     <string name="Register">注册</string>
+    <string name="check_password">确认密码</string>
+    <string name="submit">提交</string>
 </resources>
